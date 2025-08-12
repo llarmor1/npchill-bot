@@ -58,7 +58,6 @@ class BirthdayCog(commands.Cog, name="Birthday"):
 
 
 
-    @commands.command()
     async def calendar(self, ctx):
         args = ctx.message.content.split()[2:]
 
@@ -74,7 +73,7 @@ class BirthdayCog(commands.Cog, name="Birthday"):
         if not month_num:
             month_num = time.gmtime().tm_mon
 
-        users_birthday = self.bot.database.get_users_birthday(month_num) 
+        users_birthday = self.bot.database.get_users_birthday(month_num)
 
         bytes_dict = {}
 
@@ -86,7 +85,12 @@ class BirthdayCog(commands.Cog, name="Birthday"):
                 asset = member.avatar.with_size(128)
                 avatar_bytes = await asset.read()
 
-                bytes_dict[profile["birthday_date_day"]] = avatar_bytes
+                
+                if (profile["birthday_date_day"] not in bytes_dict.keys()): # Primera iteracion
+                    bytes_dict[int(profile["birthday_date_day"])] = [] 
+
+
+                bytes_dict[int(profile["birthday_date_day"])].append(avatar_bytes)
 
         
 
