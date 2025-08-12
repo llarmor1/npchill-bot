@@ -57,7 +57,7 @@ class BirthdayCog(commands.Cog, name="Birthday"):
                         )
 
 
-
+    @commands.command()
     async def calendar(self, ctx):
         args = ctx.message.content.split()[2:]
 
