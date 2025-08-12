@@ -94,28 +94,7 @@ class BirthdayCog(commands.Cog, name="Birthday"):
 
         await ctx.send(file=discord.File(fp=img_buffer, filename="hb.png"))
 
-    @commands.command()
-    async def test_avatar(self, ctx):
-        avatar_asset = ctx.author.avatar_url_as(format="png", size=128)
-        avatar_bytes = await avatar_asset.read()
 
-        img_buffer = self.cg.avatar_test(avatar_bytes)
-
-        await ctx.send(file=discord.File(fp=img_buffer, filename="hb.png"))
-
-    @commands.command()
-    async def test2(self, ctx):
-        args = ctx.message.content.split()[1:]
-
-
-
-        if len(args) == 0:
-            await ctx.send(f"Uso correcto `{PREFIX}setbirthday día/mes`")
-        else:
-            string = " ".join(args)
-            numbers_list = self.stringService.findNumbers(string)
-
-            await ctx.send(numbers_list)
 
     async def check_birthday(self):
         while not self.bot.is_closed():
