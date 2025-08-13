@@ -76,17 +76,17 @@ class BirthdayCog(commands.Cog, name="Birthday"):
         users_birthday = self.bot.database.get_users_birthday(month_num)
 
         bytes_dict = {}
-	guild_npchill = self.bot.get_guild(config.npchill_id)
+        guild_npchill = self.bot.get_guild(config.npchill_id)
         for profile in users_birthday:
-		
+        
             member = guild_npchill.get_member(int(profile["user_id"]))
 
 
             if member:
-		try:
-                	asset = member.guild_avatar.with_size(128)
-		except:
-			asset = member.avatar.with_size(128)
+                try:
+                    asset = member.guild_avatar.with_size(128)
+                except:
+                    asset = member.avatar.with_size(128)
                 avatar_bytes = await asset.read()
 
                 
