@@ -82,7 +82,7 @@ class BirthdayCog(commands.Cog, name="Birthday"):
 
 
             if member:
-                asset = member.avatar.with_size(128)
+                asset = member.guild_avatar.with_size(128)
                 avatar_bytes = await asset.read()
 
                 
